@@ -1,0 +1,31 @@
+.form-log {
+    width: 480px;
+    height: 250px;
+    border-radius: 5px;
+    box-shadow: 5px 5px 10px 5px rgba(0, 0, 0, 0.1);
+}
+
+.form-control {
+    width: 290px;
+    height: 40px;
+    display: inline-block;
+}
+
+.login-btn {
+    color: white;
+    background-color: #1685e5;
+    border: 0;
+    border-radius: 5px;
+    width: 60px;
+    height: 38px;
+    font-size: 15px;
+}
+
+.login-img {
+    background-image: url(../img/login-img.svg);
+    width: 120px;
+    height: 120px;
+    background-size: 100%;
+    background-repeat: no-repeat;
+    display: inline-block;
+}

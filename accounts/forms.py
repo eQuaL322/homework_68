@@ -1,13 +1,15 @@
 from django import forms
 from accounts.models import CustomUser
 
+
 class LoginForm(forms.Form):
-    username = forms.CharField(required=True, label='Username')
-    password = forms.CharField(required=True, label= 'Password', widget=forms.PasswordInput)
+    username = forms.CharField(required=True, label='',
+                               widget=forms.TextInput(attrs={'placeholder': 'Имя пользователя или эл. адрес'}))
+    password = forms.CharField(required=True, label='', widget=forms.PasswordInput(attrs={'placeholder': 'Пароль'}))
 
 
 class CustomUserCreationForm(forms.ModelForm):
-    type = forms.ChoiceField( widget=forms.RadioSelect)
+    type = forms.ChoiceField(widget=forms.RadioSelect)
     avatar = forms.ImageField(required=False)
     password = forms.CharField(label='Password', strip=False, required=True, widget=forms.PasswordInput)
     password_confirm = forms.CharField(label='Confirm Password', strip=False, required=True,
@@ -30,4 +32,3 @@ class CustomUserCreationForm(forms.ModelForm):
         if commit:
             user.save()
         return user
-
