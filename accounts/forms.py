@@ -1,23 +1,55 @@
 from django import forms
-from accounts.models import CustomUser
+from django.contrib.auth import get_user_model
+
+from accounts.models import UserTypeChoice
 
 
 class LoginForm(forms.Form):
-    username = forms.CharField(required=True, label='',
-                               widget=forms.TextInput(attrs={'placeholder': 'Имя пользователя или эл. адрес'}))
-    password = forms.CharField(required=True, label='', widget=forms.PasswordInput(attrs={'placeholder': 'Пароль'}))
+    username = forms.CharField(
+        required=True,
+        label='',
+        widget=forms.TextInput(
+            attrs={'placeholder': 'Имя пользователя'})
+    )
+    password = forms.CharField(
+        required=True,
+        label='',
+        widget=forms.PasswordInput(
+            attrs={'placeholder': 'Пароль'})
+    )
 
 
 class CustomUserCreationForm(forms.ModelForm):
-    type = forms.ChoiceField(widget=forms.RadioSelect)
-    avatar = forms.ImageField(required=False)
-    password = forms.CharField(label='Password', strip=False, required=True, widget=forms.PasswordInput)
-    password_confirm = forms.CharField(label='Confirm Password', strip=False, required=True,
-                                       widget=forms.PasswordInput)
+    password = forms.CharField(
+        label='',
+        strip=False,
+        required=True,
+        widget=forms.PasswordInput(attrs={'placeholder': 'Пароль'})
+    )
+    password_confirm = forms.CharField(
+        label='',
+        strip=False,
+        required=True,
+        widget=forms.PasswordInput(attrs={'placeholder': 'Подтвердите пароль'}),
+    )
 
     class Meta:
-        model = CustomUser
+        model = get_user_model()
         fields = ['username', 'email', 'password', 'password_confirm', 'type', 'phone', 'avatar']
+        labels = {
+            'username': '',
+            'email': '',
+            'type': '',
+            'phone': '',
+            'avatar': '',
+        }
+        widgets = {
+            'username': forms.TextInput(attrs={'placeholder': 'Имя пользователя'}),
+            'email': forms.EmailInput(attrs={'placeholder': 'Email'}),
+            'type': forms.Select(choices=UserTypeChoice.choices),
+            'phone': forms.TextInput(attrs={'placeholder': 'Номер телефона'}),
+            'avatar': forms.ClearableFileInput(attrs={'required': False}),
+        }
 
     def clean(self):
         cleaned_data = super().clean()

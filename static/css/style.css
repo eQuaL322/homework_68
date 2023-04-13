@@ -5,10 +5,20 @@
     box-shadow: 5px 5px 10px 5px rgba(0, 0, 0, 0.1);
 }
 
+.form-register {
+    width: 400px;
+    height: 550px;
+    border-radius: 5px;
+    box-shadow: 5px 5px 10px 5px rgba(0, 0, 0, 0.1);
+}
+
 .form-control {
     width: 290px;
     height: 40px;
-    display: inline-block;
+}
+
+.form {
+    float: left;
 }
 
 .login-btn {
@@ -19,6 +29,7 @@
     width: 60px;
     height: 38px;
     font-size: 15px;
+    clear: both;
 }
 
 .login-img {
@@ -27,5 +38,12 @@
     height: 120px;
     background-size: 100%;
     background-repeat: no-repeat;
-    display: inline-block;
+    float: left;
+}
+
+select[name=type] {
+    height: 40px;
+    width: 200px;
+    font-size: 1rem;
+    color: gray;
 }

@@ -10,13 +10,13 @@
     <div class="d-flex justify-content-center flex-column
     align-items-center mt-5">
         <div class="form-log px-3 py-3 border rounded-1">
-            <h4 class="mb-3">Поиск работы</h4>
+            <h4 class="mb-4">Поиск работы</h4>
             <form method="post">
                 <div class="form d-inline">
                     {% csrf_token %}
                     {% bootstrap_form form %}
-                    <div class="login-img"></div>
                 </div>
+                <div class="login-img"></div>
                 <div class="form_row">
                     <input type="submit" value="Войти" class="login-btn">
                 </div>

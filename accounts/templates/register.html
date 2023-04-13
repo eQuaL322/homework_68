@@ -1,15 +1,28 @@
-{% extends 'base.html' %}
-{% load django_bootstrap5 %}
+{% load static %}
+{% load bootstrap5 %}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+<head>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <title>{% block title %}Регистрация{% endblock %}</title>
+</head>
 {% block content %}
-    <div class="container">
-    <form method="post">
-       <div class="form">
-            {% csrf_token %}
-        {% bootstrap_form form %}
-       </div>
-        <div class="form_row">
-            {% bootstrap_button button_type="submit" content="Done" %}
+    <div class="d-flex flex-column
+    align-items-center container">
+        <div class="form-register mt-5 d-flex justify-content-center flex-column
+    align-items-center">
+            <h4 class="my-4">Регистрация</h4>
+            <form method="post" enctype="multipart/form-data">
+                <div class="form">
+                    {% csrf_token %}
+                    {% bootstrap_form form %}
+                    <div class="mb-2">
+                        {% bootstrap_button button_type="submit" content="Зарегистрироваться" %}
+                    </div>
+                </div>
+
+            </form>
         </div>
-    </form>
     </div>
+    <script src="../../static/js/register.js"></script>
 {% endblock %}
