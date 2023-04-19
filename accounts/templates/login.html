@@ -1,11 +1,8 @@
-{% load static %}
+{% extends 'base.html' %}
 {% load bootstrap5 %}
 {% bootstrap_css %}
 {% bootstrap_javascript %}
-<head>
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
-    <title>{% block title %}Вход в личный кабинет{% endblock %}</title>
-</head>
+{% block title %}Вход в личный кабинет{% endblock %}
 {% block content %}
     <div class="d-flex justify-content-center flex-column
     align-items-center mt-5">

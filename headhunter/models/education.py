@@ -7,6 +7,8 @@ class EducationChoices(TextChoices):
     SECONDARY = 'Среднее образование', 'Среднее образование'
     HIGHER = 'Высшее образование', 'Высшее образование'
     NONE = 'Без образования', 'Без образования'
+
+
 class Education(models.Model):
     education_form = models.CharField(
         verbose_name='Вид образования',
@@ -37,9 +39,8 @@ class Education(models.Model):
         null=False,
         blank=False
     )
-    #тут почему то не видит resume
     resume = models.ForeignKey(
-        to='resume.Resume',
+        to='Resume',
         related_name='education',
         null=False,
         blank=False,

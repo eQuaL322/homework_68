@@ -2,7 +2,6 @@ from django.db import models
 
 
 class Experience(models.Model):
-
     company = models.CharField(
         max_length=150,
         blank=False,
@@ -25,10 +24,9 @@ class Experience(models.Model):
         null=False,
         blank=False
     )
-    #тут почему то не видит resume
     resume = models.ForeignKey(
-        to='resume.Resume',
-        related_name='education',
+        to='Resume',
+        related_name='experience',
         null=False,
         blank=False,
         verbose_name='Резюме',

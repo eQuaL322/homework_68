@@ -9,9 +9,12 @@ class VacancyChoices(TextChoices):
     PR = 'PR', 'PR'
     COMMERCE = 'Торговля', 'Торговля'
 
+
 class SexChoices(TextChoices):
     MALE = 'Мужчина'
     FEMALE = 'Женщина'
+
+
 class Resume(models.Model):
     author = models.ForeignKey(
         verbose_name='Соискатель',
@@ -27,14 +30,14 @@ class Resume(models.Model):
         blank=False,
         max_length=200
     )
-    #катергории вакансий
+    # катергории вакансий
     vacancy = models.CharField(
         verbose_name='Профессия',
         max_length=100,
         null=True,
         blank=False,
         choices=VacancyChoices.choices
-)
+    )
     sex = models.CharField(
         verbose_name='Пол',
         max_length=100,

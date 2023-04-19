@@ -3,7 +3,7 @@ from django.contrib.auth import authenticate, login, logout, get_user_model, upd
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.http import HttpResponseRedirect
 from django.shortcuts import redirect, get_object_or_404
-from django.urls import reverse
+from django.urls import reverse, reverse_lazy
 from django.views.generic import TemplateView, CreateView, DetailView, UpdateView
 from accounts.forms import CustomUserCreationForm, LoginForm, PasswordChangeForm, UserChangeForm
 
@@ -29,7 +29,7 @@ class LoginView(TemplateView):
             messages.warning(request, "User Not Found")
             return redirect('index')
         login(request, user)
-        return redirect('index')
+        return redirect(reverse_lazy('profile', kwargs={'pk': self.request.user.pk}))
 
 
 def logout_view(request):
@@ -50,10 +50,12 @@ class RegisterView(CreateView):
             return redirect(self.success_url)
         context = {'form': form}
         return self.render_to_response(context)
+
+
 class ProfileView(LoginRequiredMixin, DetailView):
     model = get_user_model()
     template_name = 'profile.html'
-    context_object_name = 'user_obj'
+    context_object_name = 'account'
 
     def get_context_data(self, **kwargs):
         kwargs['form'] = UserChangeForm(instance=self.get_object())
@@ -61,7 +63,6 @@ class ProfileView(LoginRequiredMixin, DetailView):
 
     def get_object(self, queryset=None):
         return get_object_or_404(get_user_model(), pk=self.kwargs.get('pk'))
-
 
 
 class ProfileChangeView(LoginRequiredMixin, UpdateView):

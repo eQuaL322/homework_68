@@ -47,3 +47,57 @@ select[name=type] {
     font-size: 1rem;
     color: gray;
 }
+
+.navbar {
+    background-color: #222324 !important;
+    height: 80px;
+    padding: 0 0;
+}
+
+.head-line {
+    height: 40px;
+}
+
+.logo {
+    height: 50px;
+    width: 50px;
+}
+
+.base-login {
+    text-decoration: none;
+    border: 1px solid gray;
+    padding: 10px 12px;
+    border-radius: 25px;
+    color: white;
+}
+
+.base-login:hover {
+    text-decoration: none;
+    border: 1px solid white;
+    color: white;
+}
+
+.account-logo {
+    background-image: url("../img/profile.svg");
+    display: inline-block;
+    width: 32px;
+    height: 32px;
+    background-position: 0 0;
+    vertical-align: middle;
+    border: 0;
+    outline: none;
+    text-decoration: none;
+}
+
+.account-logo:hover {
+    background-position: 1110 0;
+}
+
+.log-out {
+    color: white;
+}
+
+.log-out:hover {
+    color: dodgerblue;
+}
+
