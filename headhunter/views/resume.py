@@ -33,6 +33,21 @@ class CreateResumeView(LoginRequiredMixin, CreateView):
         return reverse_lazy('resume_detail', kwargs={'pk': self.request.user.pk})
 
 
+class UpdateResumeView(UpdateView):
+    template_name = 'resume_update.html'
+    form_class = ResumeForm
+    model = Resume
+
+    def get_context_data(self, *args, **kwargs):
+        context = super(UpdateResumeView, self).get_context_data()
+        resume = get_object_or_404(Resume, pk=self.kwargs.get('pk'))
+        context['resume'] = resume
+        return context
+
+    def get_success_url(self):
+        return reverse_lazy('profile', kwargs={'pk': self.request.user.pk})
+
+
 class ResumeDetailView(LoginRequiredMixin, DetailView):
     template_name = 'resume_detail.html'
     model = Resume

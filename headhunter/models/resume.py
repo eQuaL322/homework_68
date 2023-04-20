@@ -69,13 +69,13 @@ class Resume(models.Model):
         blank=False,
         verbose_name='Telegram'
     )
-    facebook = models.URLField(
+    facebook = models.CharField(
         max_length=200,
         null=True,
         blank=True,
         verbose_name='Facebook'
     )
-    linkedin = models.URLField(
+    linkedin = models.CharField(
         max_length=200,
         null=True,
         blank=True,

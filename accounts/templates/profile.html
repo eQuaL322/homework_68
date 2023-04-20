@@ -28,14 +28,16 @@
                 <h5>Мои резюме:</h5>
                 {% for resume in resumes %}
                     <div class="mb-3">
-                        <h6 class="d-inline">Название резюме: {{ resume.title }}</h6>
+                        <h6 class="d-inline">Название резюме:
+                            <a href="{% url 'resume_detail' resume.pk %}">{{ resume.title }}</a>
+                        </h6>
                         <p class="mb-0">Обновлено: {{ resume.updated_at }}</p>
                         <form class="d-inline" action="{% url 'resume_update_date' resume.pk %}" method="POST">
                             {% csrf_token %}
                             <button type="submit" class="btn btn-secondary btn-sm mr-3 mt-2">Обновить</button>
                         </form>
                         <a class="btn btn-primary btn-sm mt-2"
-                           href="{% url 'resume_detail' resume.pk %}">Редактировать</a>
+                           href="{% url 'resume_edit' resume.pk %}">Редактировать</a>
                     </div>
                 {% endfor %}
             {% else %}

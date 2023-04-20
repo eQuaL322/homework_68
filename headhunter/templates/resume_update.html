@@ -1,4 +1,14 @@
 {% extends 'base.html' %}
+{% load bootstrap5 %}
+{% block title %}Редактирование резюме{% endblock %}
 {% block content %}
-
+    <div>
+        <form action="{% url 'resume_edit' resume.pk %}" method='POST' enctype="multipart/form-data">
+            <div class='form'>
+                {% csrf_token %}
+                {% bootstrap_form form %}
+                {% bootstrap_button button_type="submit" content='Сохранить' %}
+            </div>
+        </form>
+    </div>
 {% endblock %}
