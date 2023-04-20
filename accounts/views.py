@@ -68,32 +68,32 @@ class ProfileView(LoginRequiredMixin, DetailView):
     def get_object(self, queryset=None):
         return get_object_or_404(get_user_model(), pk=self.kwargs.get('pk'))
 
-
-class ProfileChangeView(LoginRequiredMixin, UpdateView):
-    model = get_user_model()
-    form_class = UserChangeForm
-    template_name = 'profile.html'
-    context_object_name = 'user_obj'
-
-    def get_success_url(self):
-        return reverse('profile', kwargs={'pk': self.request.user.pk})
-
-    def form_valid(self, form):
-        response = super().form_valid(form)
-        update_session_auth_hash(self.request, self.object)
-        return response
-
-
-class PasswordChangeView(LoginRequiredMixin, UpdateView):
-    model = get_user_model()
-    template_name = 'password_change.html'
-    form_class = PasswordChangeForm
-    context_object_name = 'user_obj'
-
-    def get_success_url(self):
-        return reverse('profile', kwargs={'pk': self.request.user.pk})
-
-    def form_valid(self, form):
-        response = super().form_valid(form)
-        update_session_auth_hash(self.request, self.object)
-        return response
+#
+# class ProfileChangeView(LoginRequiredMixin, UpdateView):
+#     model = get_user_model()
+#     form_class = UserChangeForm
+#     template_name = 'profile.html'
+#     context_object_name = 'user_obj'
+#
+#     def get_success_url(self):
+#         return reverse('profile', kwargs={'pk': self.request.user.pk})
+#
+#     def form_valid(self, form):
+#         response = super().form_valid(form)
+#         update_session_auth_hash(self.request, self.object)
+#         return response
+#
+#
+# class PasswordChangeView(LoginRequiredMixin, UpdateView):
+#     model = get_user_model()
+#     template_name = 'password_change.html'
+#     form_class = PasswordChangeForm
+#     context_object_name = 'user_obj'
+#
+#     def get_success_url(self):
+#         return reverse('profile', kwargs={'pk': self.request.user.pk})
+#
+#     def form_valid(self, form):
+#         response = super().form_valid(form)
+#         update_session_auth_hash(self.request, self.object)
+#         return response

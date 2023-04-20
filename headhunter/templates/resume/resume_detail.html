@@ -39,9 +39,14 @@
             </div>
         {% endfor %}
     </div>
-    <a href="{% url 'experience_add' resume.pk %}">
-        <button type="button" class="btn btn-primary btn-sm">Добавить опыт работы</button>
-    </a>
+    {% if request.user.pk == resume.author.pk %}
+        <a href="{% url 'experience_add' resume.pk %}">
+            <button type="button" class="btn btn-primary btn-sm">Добавить опыт работы</button>
+        </a>
+        <a href="{% url 'experience_edit' resume.pk %}">
+            <button type="button" class="btn btn-primary btn-sm">Редактировать опыт работы</button>
+        </a>
+    {% endif %}
     <hr>
     <div>
         {% for education in resume.education.all %}
@@ -55,9 +60,14 @@
             </div>
         {% endfor %}
     </div>
-    <a href="{% url 'education_add' resume.pk %}">
-        <button type="button" class="btn btn-primary btn-sm">Добавить образование</button>
-    </a>
+    {% if request.user.pk == resume.author.pk %}
+        <a href="{% url 'education_add' resume.pk %}">
+            <button type="button" class="btn btn-primary btn-sm">Добавить образование</button>
+        </a>
+        <a href="{% url 'education_edit' resume.pk %}">
+            <button type="button" class="btn btn-primary btn-sm">Редактировать образование</button>
+        </a>
+    {% endif %}
     <div>
         <a href="{% url 'profile' resume.author.pk %}" class="card-link">
             <p class="">Перейти к автору резюме</p>

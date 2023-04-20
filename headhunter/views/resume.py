@@ -3,15 +3,15 @@ from datetime import datetime
 from django.urls import reverse_lazy
 from django.views.generic import DetailView
 from django.views.generic.edit import CreateView, UpdateView
-from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import redirect, get_object_or_404
 from django.http import HttpResponseForbidden
-from headhunter.forms.resume import ResumeForm, ExperienceForm, EducationForm
+from headhunter.forms.resume_form import ResumeForm
 from headhunter.models import Resume, Experience, Education
 
 
 class CreateResumeView(LoginRequiredMixin, CreateView):
-    template_name = 'resume_create.html'
+    template_name = 'resume/resume_create.html'
     model = Resume
     form_class = ResumeForm
 
@@ -34,7 +34,7 @@ class CreateResumeView(LoginRequiredMixin, CreateView):
 
 
 class UpdateResumeView(UpdateView):
-    template_name = 'resume_update.html'
+    template_name = 'resume/resume_update.html'
     form_class = ResumeForm
     model = Resume
 
@@ -49,7 +49,7 @@ class UpdateResumeView(UpdateView):
 
 
 class ResumeDetailView(LoginRequiredMixin, DetailView):
-    template_name = 'resume_detail.html'
+    template_name = 'resume/resume_detail.html'
     model = Resume
     context_object_name = 'resume'
 
@@ -60,84 +60,6 @@ class ResumeDetailView(LoginRequiredMixin, DetailView):
         context['experiences'] = experiences
         context['education'] = education
         return context
-
-
-class CreateExperienceView(CreateView):
-    template_name = 'experience_create.html'
-    model = Experience
-    form_class = ExperienceForm
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['resume'] = get_object_or_404(Resume, pk=self.kwargs['pk'])
-        return context
-
-    def post(self, request, *args, **kwargs):
-        form = self.form_class(request.POST)
-        resume = get_object_or_404(Resume, pk=self.kwargs['pk'])
-        if form.is_valid():
-            experience = form.save(commit=False)
-            experience.resume = resume
-            experience.save()
-            return redirect('resume_detail', pk=resume.pk)
-        context = {'form': form, 'resume': resume}
-        return self.render_to_response(context)
-
-    def get_success_url(self):
-        return reverse_lazy('resume_detail', kwargs={'pk': self.request.user.pk})
-
-
-# class ExperienceUpdateView(PermissionRequiredMixin, UpdateView):
-#     template_name = 'experience_update.html'
-#     model = Experience
-#     form_class = ExperienceForm
-#     permission_required = 'webapp.change_experience'
-#
-#     def get_success_url(self):
-#         return reverse('resume', kwargs={'pk': self.object.pk})
-#
-#     def has_permission(self):
-#         return super().has_permission() and self.get_object().author == self.request.user \
-#             or self.request.user.is_superuser
-#
-
-class EducationCreateView(CreateView):
-    template_name = 'education_create.html'
-    model = Education
-    form_class = EducationForm
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['resume'] = get_object_or_404(Resume, pk=self.kwargs['pk'])
-        return context
-
-    def post(self, request, *args, **kwargs):
-        form = self.form_class(request.POST)
-        resume = get_object_or_404(Resume, pk=self.kwargs['pk'])
-        if form.is_valid():
-            education = form.save(commit=False)
-            education.resume = resume
-            education.save()
-            return redirect('resume_detail', pk=resume.pk)
-        context = {'form': form, 'resume': resume}
-        return self.render_to_response(context)
-
-    def get_success_url(self):
-        return reverse_lazy('resume_detail', kwargs={'pk': self.request.user.pk})
-
-
-# class EducationUpdateView(PermissionRequiredMixin, UpdateView):
-#     template_name = 'education_update.html'
-#     model = Education
-#     form_class = EducationForm
-#     permission_required = 'webapp.change_education'
-#
-#     def get_success_url(self):
-#         return reverse('resume', kwargs={'pk': self.object.pk})
-#
-#     def has_permission(self):
-#         return super().has_permission() and self.get_object().author == self.request.user \
-#             or self.request.user.is_superuser
 
 
 class ResumeUpdateDateView(UpdateView):
