@@ -2,6 +2,12 @@ from django.db import models
 
 
 class Experience(models.Model):
+    about = models.TextField(
+        max_length=1000,
+        blank=True,
+        null=True,
+        verbose_name='Обязанности'
+    )
     company = models.CharField(
         max_length=150,
         blank=False,

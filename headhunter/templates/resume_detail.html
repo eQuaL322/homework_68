@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+{% load bootstrap5 %}
+{% load static %}
+
+{% block title %}
+    Детальный просмотр резюме
+{% endblock %}
+
+{% block content %}
+
+    <div>
+        <h2 class="my-3">{{ resume.title }}</h2>
+        <h6>Имя кандидата: {{ resume.author.first_name }}</h6>
+        <h6>Ожидаемая зарплата: {{ resume.salary }} тнг</h6>
+        <h6>Номер телефона: {{ resume.phone }}</h6>
+        <h6>Почта email: {{ resume.email }}</h6>
+        {% if resume.telegram %}
+            <h6>Телеграм: {{ resume.telegram }}</h6>
+        {% endif %}
+        {% if resume.linkedin %}
+            <h6>LinkedIn: {{ resume.linkedin }}
+            </h6>
+        {% endif %}
+        {% if resume.facebook %}
+            <h6>Facebook: {{ resume.facebook }}</h6>
+        {% endif %}
+        <h6>Категория резюме: {{ resume.vacancy }}</h6>
+    </div>
+    <hr>
+    <div>
+        {% for experience in resume.experience.all %}
+            <h4 class="my-3">Опыт работы</h4>
+            <div>
+                <p>Должность: {{ experience.vacancy }}</p>
+                <p>Организация: {{ experience.company }}</p>
+                <p>Обязанности: {{ experience.about }}</p>
+                <p>Дата начала: {{ experience.start_date }}</p>
+                <p>Дата окончания: {{ experience.end_date }}</p>
+            </div>
+        {% endfor %}
+    </div>
+    <a href="{% url 'experience_add' resume.pk %}">
+        <button type="button" class="btn btn-primary btn-sm">Добавить опыт работы</button>
+    </a>
+    <hr>
+    <div>
+        {% for education in resume.education.all %}
+            <h4>Образование</h4>
+            <div>
+                <p>Вид образования: {{ education.education_form }}</p>
+                <p>Место обучения: {{ education.education }}</p>
+                <p>Специальность: {{ education.profession }}</p>
+                <p>Дата начала обучения: {{ education.start_date }}</p>
+                <p>Дата окончания обучения: {{ education.end_date }}</p>
+            </div>
+        {% endfor %}
+    </div>
+    <a href="{% url 'education_add' resume.pk %}">
+        <button type="button" class="btn btn-primary btn-sm">Добавить образование</button>
+    </a>
+    <div>
+        <a href="{% url 'profile' resume.author.pk %}" class="card-link">
+            <p class="">Перейти к автору резюме</p>
+        </a>
+    </div>
+{% endblock %}

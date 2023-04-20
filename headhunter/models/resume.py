@@ -30,9 +30,8 @@ class Resume(models.Model):
         blank=False,
         max_length=200
     )
-    # катергории вакансий
     vacancy = models.CharField(
-        verbose_name='Профессия',
+        verbose_name='Категория',
         max_length=100,
         null=True,
         blank=False,
@@ -64,7 +63,7 @@ class Resume(models.Model):
         blank=False,
         max_length=25
     )
-    telegram = models.URLField(
+    telegram = models.CharField(
         max_length=200,
         null=False,
         blank=False,

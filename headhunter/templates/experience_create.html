@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% load bootstrap5 %}
+{% block title %}Добавление опыта работы{% endblock %}
+{% block content %}
+    <div>
+        <form action="{% url 'experience_add' pk=resume.pk %}" method='POST' enctype="multipart/form-data">
+            <div class='form'>
+                {% csrf_token %}
+                {% bootstrap_form form %}
+                {% bootstrap_button button_type="submit" content='Добавить' %}
+            </div>
+        </form>
+    </div>
+{% endblock %}

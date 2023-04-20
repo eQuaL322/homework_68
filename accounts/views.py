@@ -1,11 +1,11 @@
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout, get_user_model, update_session_auth_hash
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.http import HttpResponseRedirect
 from django.shortcuts import redirect, get_object_or_404
 from django.urls import reverse, reverse_lazy
 from django.views.generic import TemplateView, CreateView, DetailView, UpdateView
 from accounts.forms import CustomUserCreationForm, LoginForm, PasswordChangeForm, UserChangeForm
+from headhunter.models import Resume
 
 
 class LoginView(TemplateView):
@@ -58,7 +58,11 @@ class ProfileView(LoginRequiredMixin, DetailView):
     context_object_name = 'account'
 
     def get_context_data(self, **kwargs):
-        kwargs['form'] = UserChangeForm(instance=self.get_object())
+        account = self.get_object()
+        resumes = Resume.objects.filter(author=account)
+
+        kwargs['form'] = UserChangeForm(instance=account)
+        kwargs['resumes'] = resumes
         return super().get_context_data(**kwargs)
 
     def get_object(self, queryset=None):

@@ -11,6 +11,8 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <title>{% block title %}Headhunter{% endblock %}</title>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"
+            integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
 </head>
 <body>
 <div class="head-line"></div>
@@ -26,21 +28,9 @@
         </a>
         <div class="collapse navbar-collapse justify-content-end">
             <ul class="navbar-nav align-items-center">
-                {#                <li class="nav_item search_form">#}
-                {#                    <form action="{% url 'account_search' %}" method="GET">#}
-                {#                        {% csrf_token %}#}
-                {#                        <input class="input_search" placeholder="Search" name="search" type="text">#}
-                {#                        <input hidden="hidden" type="submit" value="Поиск">#}
-                {#                    </form>#}
-                {#                </li>#}
-                {#                <li class="nav-item">#}
-                {#                    <a href="{% url 'post_create' %}">#}
-                {#                        <img src="{% static 'img/plus-square.svg' %}" alt="#" class="add_post_logo">#}
-                {#                    </a>#}
-                {#                </li>#}
                 {% if user.is_authenticated %}
                     <li class="nav-item">
-                        <a href="{% url 'profile' account.pk %}" class="nav-link account-logo">
+{#                        <a href="{% url 'profile' account.pk %}" class="nav-link account-logo">#}
                         </a>
                     </li>
                     <li class="nav-item ml-2">
