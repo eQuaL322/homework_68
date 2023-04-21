@@ -1,11 +1,13 @@
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout, get_user_model, update_session_auth_hash
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.http import HttpResponseNotFound
 from django.shortcuts import redirect, get_object_or_404
 from django.urls import reverse, reverse_lazy
 from django.views.generic import TemplateView, CreateView, DetailView, UpdateView
 from accounts.forms import CustomUserCreationForm, LoginForm, PasswordChangeForm, UserChangeForm
 from headhunter.models import Resume
+from headhunter.models.vacancy import Vacancy
 
 
 class LoginView(TemplateView):
@@ -60,13 +62,24 @@ class ProfileView(LoginRequiredMixin, DetailView):
     def get_context_data(self, **kwargs):
         account = self.get_object()
         resumes = Resume.objects.filter(author=account)
-
+        vacancy = Vacancy.objects.filter(author = account)
         kwargs['form'] = UserChangeForm(instance=account)
         kwargs['resumes'] = resumes
+        kwargs['vacancy'] = vacancy
         return super().get_context_data(**kwargs)
 
     def get_object(self, queryset=None):
         return get_object_or_404(get_user_model(), pk=self.kwargs.get('pk'))
+
+    def get(self, request, *args, **kwargs):
+        if self.get_object().type.COMPANY:
+            self.template_name = 'company_page.html'
+        elif self.get_object().type.CONDIDATE:
+            self.template_name = 'profile.html'
+        else:
+            return HttpResponseNotFound()
+        return super().get(request, *args, **kwargs)
+
 
 #
 # class ProfileChangeView(LoginRequiredMixin, UpdateView):
