@@ -111,3 +111,7 @@ select[name=type] {
     font-size: 15px;
     clear: both;
 }
+
+.form-filter {
+    width: 500px;
+}

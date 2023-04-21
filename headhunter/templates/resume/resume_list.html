@@ -1,6 +1,17 @@
 {% extends 'base.html' %}
 {% block title %}{% endblock %}
 {% block content %}
+    <div class="form-filter">
+        <form action="" method="GET">
+            <select name="checks" id="checks">
+                <option value="">Select a category</option>
+                {% for category in categories %}
+                    <option value="{{ category.0 }}">{{ category.1 }}</option>
+                {% endfor %}
+            </select>
+            <input class="btn btn-secondary btn-sm" type="submit" value="Apply category filter">
+        </form>
+    </div>
     <div class="search mt-3">
         <form action="{% url 'resume_search' %}" method="GET">
             {% csrf_token %}

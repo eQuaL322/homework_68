@@ -4,7 +4,7 @@ from django.db.models import TextChoices
 
 
 class VacancyChoices(TextChoices):
-    ENGINEER = 'IT', 'IT'
+    IT = 'IT', 'IT'
     EDUCATION = 'Образование', 'Образование'
     PR = 'PR', 'PR'
     COMMERCE = 'Торговля', 'Торговля'
