@@ -65,7 +65,10 @@ class CustomUserCreationForm(forms.ModelForm):
         if commit:
             user.save()
         return user
+
+
 class UserChangeForm(forms.ModelForm):
+
     class Meta:
         model = get_user_model()
         fields = (

@@ -84,19 +84,18 @@ class ProfileView(LoginRequiredMixin, DetailView):
         else:
             self.template_name = 'profile.html'
         return super().get(request, *args, **kwargs)
-#
-# class ProfileChangeView(LoginRequiredMixin, UpdateView):
-#     model = get_user_model()
-#     form_class = UserChangeForm
-#     template_name = 'profile.html'
-#     context_object_name = 'user_obj'
-#
-#     def get_success_url(self):
-#         return reverse('profile', kwargs={'pk': self.request.user.pk})
-#
-#     def form_valid(self, form):
-#         response = super().form_valid(form)
-#         update_session_auth_hash(self.request, self.object)
-#         return response
-#
-#
+
+
+class ProfileChangeView(LoginRequiredMixin, UpdateView):
+    model = get_user_model()
+    form_class = UserChangeForm
+    template_name = 'profile_change.html'
+    context_object_name = 'user_obj'
+
+    def get_success_url(self):
+        return reverse('profile', kwargs={'pk': self.request.user.pk})
+
+    def form_valid(self, form):
+        response = super().form_valid(form)
+        update_session_auth_hash(self.request, self.object)
+        return response

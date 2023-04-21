@@ -90,3 +90,12 @@ class SearchResumeListView(ListView):
                 Q(title__iregex=self.search_value)
             )
         return queryset
+
+
+def toggle_resume_visibility(request, pk):
+    resume = get_object_or_404(Resume, pk=pk)
+
+    resume.is_hidden = not resume.is_hidden
+    resume.save()
+
+    return redirect('profile', pk=resume.author.pk)

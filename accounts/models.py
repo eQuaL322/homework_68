@@ -24,15 +24,15 @@ class CustomUser(AbstractUser):
     )
     first_name = models.CharField(
         verbose_name='First name',
-        null = False,
-        blank=False,
+        null=True,
+        blank=True,
         max_length=150
     )
 
     last_name = models.CharField(
         verbose_name='Last name',
-        null = False,
-        blank=False,
+        null=True,
+        blank=True,
         max_length=150
     )
     email = models.EmailField(
