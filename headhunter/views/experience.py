@@ -1,3 +1,4 @@
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import get_object_or_404, redirect
 from django.urls import reverse_lazy
 from django.views.generic import CreateView, UpdateView
@@ -6,7 +7,7 @@ from headhunter.forms.experience_form import ExperienceForm
 from headhunter.models import Experience, Resume
 
 
-class CreateExperienceView(CreateView):
+class CreateExperienceView(LoginRequiredMixin, CreateView):
     template_name = 'experience/experience_create.html'
     model = Experience
     form_class = ExperienceForm
@@ -31,7 +32,7 @@ class CreateExperienceView(CreateView):
         return reverse_lazy('resume_detail', kwargs={'pk': self.request.user.pk})
 
 
-class ExperienceUpdateView(UpdateView):
+class ExperienceUpdateView(LoginRequiredMixin, UpdateView):
     template_name = 'experience/experience_update.html'
     model = Experience
     form_class = ExperienceForm

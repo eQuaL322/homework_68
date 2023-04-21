@@ -33,7 +33,7 @@ class CreateResumeView(LoginRequiredMixin, CreateView):
         return reverse_lazy('resume_detail', kwargs={'pk': self.request.user.pk})
 
 
-class UpdateResumeView(UpdateView):
+class UpdateResumeView(LoginRequiredMixin, UpdateView):
     template_name = 'resume/resume_update.html'
     form_class = ResumeForm
     model = Resume

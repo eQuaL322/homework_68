@@ -1,3 +1,4 @@
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import get_object_or_404, redirect
 from django.urls import reverse_lazy
 from django.views.generic import CreateView, UpdateView
@@ -6,7 +7,7 @@ from headhunter.forms.education_form import EducationForm
 from headhunter.models import Education, Resume
 
 
-class EducationCreateView(CreateView):
+class EducationCreateView(LoginRequiredMixin, CreateView):
     template_name = 'education/education_create.html'
     model = Education
     form_class = EducationForm
@@ -31,7 +32,7 @@ class EducationCreateView(CreateView):
         return reverse_lazy('resume_detail', kwargs={'pk': self.request.user.pk})
 
 
-class EducationUpdateView(UpdateView):
+class EducationUpdateView(LoginRequiredMixin, UpdateView):
     template_name = 'education/education_update.html'
     model = Education
     form_class = EducationForm
