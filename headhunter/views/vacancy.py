@@ -1,10 +1,11 @@
 from datetime import datetime
 
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.db.models import Q
 from django.http import HttpResponseForbidden
 from django.shortcuts import redirect, get_object_or_404
 from django.urls import reverse_lazy
-from django.views.generic import CreateView, UpdateView, DetailView
+from django.views.generic import CreateView, UpdateView, DetailView, ListView
 
 from headhunter.forms.vacancy_form import VacancyForm
 from headhunter.models.vacancy import Vacancy
@@ -62,3 +63,22 @@ class VacancyUpdateDateView(UpdateView):
         vacancy.updated_at = datetime.now()
         vacancy.save()
         return redirect('profile', vacancy.author.pk)
+
+
+class SearchVacancyListView(ListView):
+    template_name = 'vacancy/vacancy_search.html'
+    model = Vacancy
+    context_object_name = 'vacancies'
+    search_value = ''
+
+    def get(self, request, *args, **kwargs):
+        self.search_value = request.GET.get('search')
+        return super().get(request, *args, **kwargs)
+
+    def get_queryset(self):
+        queryset = super().get_queryset()
+        if self.search_value:
+            queryset = queryset.filter(
+                Q(title__iregex=self.search_value)
+            )
+        return queryset

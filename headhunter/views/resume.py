@@ -1,7 +1,8 @@
 from datetime import datetime
 
+from django.db.models import Q
 from django.urls import reverse_lazy
-from django.views.generic import DetailView
+from django.views.generic import DetailView, ListView
 from django.views.generic.edit import CreateView, UpdateView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import redirect, get_object_or_404
@@ -70,3 +71,22 @@ class ResumeUpdateDateView(UpdateView):
         resume.updated_at = datetime.now()
         resume.save()
         return redirect('profile', resume.author.pk)
+
+
+class SearchResumeListView(ListView):
+    template_name = 'resume/resume_search.html'
+    model = Resume
+    context_object_name = 'resumes'
+    search_value = ''
+
+    def get(self, request, *args, **kwargs):
+        self.search_value = request.GET.get('search')
+        return super().get(request, *args, **kwargs)
+
+    def get_queryset(self):
+        queryset = super().get_queryset()
+        if self.search_value:
+            queryset = queryset.filter(
+                Q(title__iregex=self.search_value)
+            )
+        return queryset

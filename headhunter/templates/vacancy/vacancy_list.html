@@ -1,6 +1,13 @@
 {% extends 'base.html' %}
 {% block title %}{% endblock %}
 {% block content %}
+    <div class="search mt-3">
+        <form action="{% url 'vacancy_search' %}" method="GET">
+            {% csrf_token %}
+            <input class="input_search" placeholder="Search" name="search" type="text">
+            <input hidden="hidden" type="submit" value="Поиск">
+        </form>
+    </div>
     {% for vacancy in vacancies %}
         <div class="card mt-3">
             <div class="card-body">

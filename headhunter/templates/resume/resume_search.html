@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+    Результат поиска Резюме
+{% endblock %}
+{% block content %}
+    {% if resumes %}
+        {% for resume in resumes %}
+            <div class="card mt-3">
+                <div class="card-body">
+                    <a href="{% url 'resume_detail' resume.pk %}"><h5 class="card-title">{{ resume.title }}</h5></a>
+                    <p class="card-text">Категория: {{ resume.category }}</p>
+                    <p class="card-text">от {{ resume.salary }} тг</p>
+                    <p class="card-text">{{ resume.created_at }}
+                        <a href="{% url 'profile' resume.author.pk %}">
+                    <p>{{ resume.author.username }}</p></a>
+                </div>
+            </div>
+        {% endfor %}
+    {% else %}
+        <div class="d-flex justify-content-center mt-4">
+            <h3>Резюме не найдено</h3>
+        </div>
+    {% endif %}
+    <a class="btn btn-primary btn-sm mt-2" href="{% url 'resume_list' %}">Просмотреть резюме</a>
+{% endblock %}

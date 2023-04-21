@@ -1,10 +1,12 @@
 from django.urls import path
 
 from headhunter.views.index import VacancyView, ResumeListView
-from headhunter.views.resume import ResumeUpdateDateView, ResumeDetailView, CreateResumeView, UpdateResumeView
+from headhunter.views.resume import ResumeUpdateDateView, ResumeDetailView, CreateResumeView, UpdateResumeView, \
+    SearchResumeListView
 from headhunter.views.education import EducationCreateView, EducationUpdateView
 from headhunter.views.experience import CreateExperienceView, ExperienceUpdateView
-from headhunter.views.vacancy import CreateVacancyView, VacancyDetailView, UpdateVacancyView, VacancyUpdateDateView
+from headhunter.views.vacancy import CreateVacancyView, VacancyDetailView, UpdateVacancyView, VacancyUpdateDateView, \
+    SearchVacancyListView
 
 urlpatterns = [
     path('vacancies/', VacancyView.as_view(), name='vacancy_list'),
@@ -21,4 +23,6 @@ urlpatterns = [
     path('vacancy/<int:pk>/detail', VacancyDetailView.as_view(), name='vacancy_detail'),
     path('vacancy/create/', CreateVacancyView.as_view(), name='vacancy_create'),
     path('vacancy/<int:pk>/update/date/', VacancyUpdateDateView.as_view(), name='vacancy_update_date'),
+    path('vacancy/search', SearchVacancyListView.as_view(), name='vacancy_search'),
+    path('resume/search', SearchResumeListView.as_view(), name='resume_search'),
 ]
