@@ -1,0 +1,626 @@
+[
+{
+  "model": "auth.permission",
+  "pk": 1,
+  "fields": {
+    "name": "Can add log entry",
+    "content_type": 1,
+    "codename": "add_logentry"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 2,
+  "fields": {
+    "name": "Can change log entry",
+    "content_type": 1,
+    "codename": "change_logentry"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 3,
+  "fields": {
+    "name": "Can delete log entry",
+    "content_type": 1,
+    "codename": "delete_logentry"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 4,
+  "fields": {
+    "name": "Can view log entry",
+    "content_type": 1,
+    "codename": "view_logentry"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 5,
+  "fields": {
+    "name": "Can add permission",
+    "content_type": 2,
+    "codename": "add_permission"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 6,
+  "fields": {
+    "name": "Can change permission",
+    "content_type": 2,
+    "codename": "change_permission"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 7,
+  "fields": {
+    "name": "Can delete permission",
+    "content_type": 2,
+    "codename": "delete_permission"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 8,
+  "fields": {
+    "name": "Can view permission",
+    "content_type": 2,
+    "codename": "view_permission"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 9,
+  "fields": {
+    "name": "Can add group",
+    "content_type": 3,
+    "codename": "add_group"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 10,
+  "fields": {
+    "name": "Can change group",
+    "content_type": 3,
+    "codename": "change_group"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 11,
+  "fields": {
+    "name": "Can delete group",
+    "content_type": 3,
+    "codename": "delete_group"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 12,
+  "fields": {
+    "name": "Can view group",
+    "content_type": 3,
+    "codename": "view_group"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 13,
+  "fields": {
+    "name": "Can add content type",
+    "content_type": 4,
+    "codename": "add_contenttype"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 14,
+  "fields": {
+    "name": "Can change content type",
+    "content_type": 4,
+    "codename": "change_contenttype"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 15,
+  "fields": {
+    "name": "Can delete content type",
+    "content_type": 4,
+    "codename": "delete_contenttype"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 16,
+  "fields": {
+    "name": "Can view content type",
+    "content_type": 4,
+    "codename": "view_contenttype"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 17,
+  "fields": {
+    "name": "Can add session",
+    "content_type": 5,
+    "codename": "add_session"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 18,
+  "fields": {
+    "name": "Can change session",
+    "content_type": 5,
+    "codename": "change_session"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 19,
+  "fields": {
+    "name": "Can delete session",
+    "content_type": 5,
+    "codename": "delete_session"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 20,
+  "fields": {
+    "name": "Can view session",
+    "content_type": 5,
+    "codename": "view_session"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 21,
+  "fields": {
+    "name": "Can add Profile",
+    "content_type": 6,
+    "codename": "add_customuser"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 22,
+  "fields": {
+    "name": "Can change Profile",
+    "content_type": 6,
+    "codename": "change_customuser"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 23,
+  "fields": {
+    "name": "Can delete Profile",
+    "content_type": 6,
+    "codename": "delete_customuser"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 24,
+  "fields": {
+    "name": "Can view Profile",
+    "content_type": 6,
+    "codename": "view_customuser"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 25,
+  "fields": {
+    "name": "Can add resume",
+    "content_type": 7,
+    "codename": "add_resume"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 26,
+  "fields": {
+    "name": "Can change resume",
+    "content_type": 7,
+    "codename": "change_resume"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 27,
+  "fields": {
+    "name": "Can delete resume",
+    "content_type": 7,
+    "codename": "delete_resume"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 28,
+  "fields": {
+    "name": "Can view resume",
+    "content_type": 7,
+    "codename": "view_resume"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 29,
+  "fields": {
+    "name": "Can add experience",
+    "content_type": 8,
+    "codename": "add_experience"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 30,
+  "fields": {
+    "name": "Can change experience",
+    "content_type": 8,
+    "codename": "change_experience"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 31,
+  "fields": {
+    "name": "Can delete experience",
+    "content_type": 8,
+    "codename": "delete_experience"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 32,
+  "fields": {
+    "name": "Can view experience",
+    "content_type": 8,
+    "codename": "view_experience"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 33,
+  "fields": {
+    "name": "Can add education",
+    "content_type": 9,
+    "codename": "add_education"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 34,
+  "fields": {
+    "name": "Can change education",
+    "content_type": 9,
+    "codename": "change_education"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 35,
+  "fields": {
+    "name": "Can delete education",
+    "content_type": 9,
+    "codename": "delete_education"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 36,
+  "fields": {
+    "name": "Can view education",
+    "content_type": 9,
+    "codename": "view_education"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 37,
+  "fields": {
+    "name": "Can add vacancy",
+    "content_type": 10,
+    "codename": "add_vacancy"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 38,
+  "fields": {
+    "name": "Can change vacancy",
+    "content_type": 10,
+    "codename": "change_vacancy"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 39,
+  "fields": {
+    "name": "Can delete vacancy",
+    "content_type": 10,
+    "codename": "delete_vacancy"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 40,
+  "fields": {
+    "name": "Can view vacancy",
+    "content_type": 10,
+    "codename": "view_vacancy"
+  }
+},
+{
+  "model": "accounts.customuser",
+  "pk": 1,
+  "fields": {
+    "password": "pbkdf2_sha256$600000$vzPgnxI4Ly7S1MxWqE4G5z$+W8ovnjUe5Y7umpIt2klDzTn2rKW88+gaJ29la9MdEA=",
+    "last_login": "2023-04-21T21:09:11.763Z",
+    "is_superuser": false,
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2023-04-20T16:57:28.304Z",
+    "type": "Соискатель",
+    "username": "root",
+    "first_name": "Azamat",
+    "last_name": "Umurzakov",
+    "email": "root@example.com",
+    "avatar": "",
+    "phone": "77777777777",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "accounts.customuser",
+  "pk": 2,
+  "fields": {
+    "password": "pbkdf2_sha256$600000$5YbM3jbQJIUQRxzGuh7kT6$kNPrH3jsHFeNLaRaRQZpeaMcaeK/mWlHMvsldENDC/c=",
+    "last_login": "2023-04-21T21:08:24.717Z",
+    "is_superuser": false,
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2023-04-21T15:46:31.154Z",
+    "type": "Компания",
+    "username": "root2",
+    "first_name": "",
+    "last_name": "",
+    "email": "root2@example.com",
+    "avatar": "",
+    "phone": "77777777777",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "accounts.customuser",
+  "pk": 3,
+  "fields": {
+    "password": "pbkdf2_sha256$600000$Nr1lOkfUqLxRicGFuX9F77$5fsFUgr/Ri1Rok4lJtbTDvsV5tidxrqrWJZjqzjyteU=",
+    "last_login": "2023-04-21T20:29:55.183Z",
+    "is_superuser": false,
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2023-04-21T18:15:41.639Z",
+    "type": "Соискатель",
+    "username": "root3",
+    "first_name": "",
+    "last_name": "",
+    "email": "root3@example.com",
+    "avatar": "avatars/Summer021223bIMG_2669.jpg",
+    "phone": "77777777777",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "accounts.customuser",
+  "pk": 4,
+  "fields": {
+    "password": "pbkdf2_sha256$600000$s6TL3P0WIDuBVJRy5NfsX1$FLTsK8s7L5mcy/8hY9aO8Z4kdPlBqN8JwX33uBqxnFI=",
+    "last_login": "2023-04-21T18:17:47.977Z",
+    "is_superuser": false,
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2023-04-21T18:17:17.457Z",
+    "type": "Компания",
+    "username": "root4",
+    "first_name": "",
+    "last_name": "",
+    "email": "root4@example.com",
+    "avatar": "avatars/Summer021223bIMG_2669_ti3hZ8J.jpg",
+    "phone": "77777777777",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "accounts.customuser",
+  "pk": 5,
+  "fields": {
+    "password": "pbkdf2_sha256$600000$OIHlIYX1JNYIrePslc5Thg$zEOSVe190IoSz8ACgeWWAr8gj0IYiinJPTNj/HFgZ4E=",
+    "last_login": "2023-04-21T18:18:35.822Z",
+    "is_superuser": false,
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2023-04-21T18:18:35.245Z",
+    "type": "Соискатель",
+    "username": "root5",
+    "first_name": "Котик",
+    "last_name": "Котиков",
+    "email": "root5@example.com",
+    "avatar": "avatars/Summer021223bIMG_2669_kOhUdQt.jpg",
+    "phone": "77777777777",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "headhunter.resume",
+  "pk": 1,
+  "fields": {
+    "author": 1,
+    "title": "Test",
+    "vacancy": "Образование",
+    "sex": "Мужчина",
+    "about": "test",
+    "salary": "200000.00",
+    "phone": "77777777777",
+    "telegram": "test",
+    "facebook": "test",
+    "linkedin": "test",
+    "email": "root@example.com",
+    "is_hidden": false,
+    "created_at": "2023-04-20T16:59:19.539Z",
+    "updated_at": "2023-04-21T20:38:42.290Z"
+  }
+},
+{
+  "model": "headhunter.resume",
+  "pk": 2,
+  "fields": {
+    "author": 5,
+    "title": "Лучший работник года",
+    "vacancy": "PR",
+    "sex": "Женщина",
+    "about": "Я котик!",
+    "salary": "1000000.00",
+    "phone": "у меня лапки",
+    "telegram": "test",
+    "facebook": null,
+    "linkedin": null,
+    "email": "cat@example.com",
+    "is_hidden": false,
+    "created_at": "2023-04-21T18:19:41.352Z",
+    "updated_at": "2023-04-21T18:19:41.352Z"
+  }
+},
+{
+  "model": "headhunter.resume",
+  "pk": 3,
+  "fields": {
+    "author": 3,
+    "title": "cattt",
+    "vacancy": "Торговля",
+    "sex": "Мужчина",
+    "about": "cattt",
+    "salary": "100000.00",
+    "phone": "77777777777",
+    "telegram": "telega",
+    "facebook": null,
+    "linkedin": null,
+    "email": "cattt@example.com",
+    "is_hidden": false,
+    "created_at": "2023-04-21T20:30:24.643Z",
+    "updated_at": "2023-04-21T20:30:24.643Z"
+  }
+},
+{
+  "model": "headhunter.education",
+  "pk": 1,
+  "fields": {
+    "education_form": "Курсы",
+    "education": "test",
+    "profession": "test",
+    "start_date": 2222,
+    "end_date": 22222,
+    "resume": 1
+  }
+},
+{
+  "model": "headhunter.education",
+  "pk": 2,
+  "fields": {
+    "education_form": "Высшее образование",
+    "education": "sdu",
+    "profession": "Айтишник",
+    "start_date": 2000,
+    "end_date": 2004,
+    "resume": 2
+  }
+},
+{
+  "model": "headhunter.experience",
+  "pk": 1,
+  "fields": {
+    "about": "test",
+    "company": "test!",
+    "vacancy": "test",
+    "start_date": 2222,
+    "end_date": 2222,
+    "resume": 1
+  }
+},
+{
+  "model": "headhunter.experience",
+  "pk": 2,
+  "fields": {
+    "about": "отдыхать и кушать",
+    "company": "Колеса",
+    "vacancy": "Айтишник",
+    "start_date": 2000,
+    "end_date": 2023,
+    "resume": 2
+  }
+},
+{
+  "model": "headhunter.vacancy",
+  "pk": 1,
+  "fields": {
+    "author": 2,
+    "title": "Devoloper",
+    "description": "test",
+    "requirements": "test",
+    "salary": "200000.00",
+    "category": "IT",
+    "exp_from": 1,
+    "exp_to": 3,
+    "created_at": "2023-04-21T15:56:00.973Z",
+    "updated_at": "2023-04-21T16:11:40.241Z",
+    "is_hidden": false
+  }
+},
+{
+  "model": "headhunter.vacancy",
+  "pk": 2,
+  "fields": {
+    "author": 2,
+    "title": "Designer",
+    "description": "test",
+    "requirements": "figma",
+    "salary": "150000.00",
+    "category": "IT",
+    "exp_from": 1,
+    "exp_to": 1,
+    "created_at": "2023-04-21T17:21:20.279Z",
+    "updated_at": "2023-04-21T17:21:20.279Z",
+    "is_hidden": false
+  }
+},
+{
+  "model": "headhunter.vacancy",
+  "pk": 3,
+  "fields": {
+    "author": 2,
+    "title": "pr",
+    "description": "prprprpr",
+    "requirements": "prprpr",
+    "salary": "100000.00",
+    "category": "Торговля",
+    "exp_from": 1,
+    "exp_to": 1,
+    "created_at": "2023-04-21T21:08:51.975Z",
+    "updated_at": "2023-04-21T21:08:51.975Z",
+    "is_hidden": false
+  }
+}
+]
