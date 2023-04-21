@@ -6,6 +6,7 @@ from django.shortcuts import redirect, get_object_or_404
 from django.urls import reverse, reverse_lazy
 from django.views.generic import TemplateView, CreateView, DetailView, UpdateView
 from accounts.forms import CustomUserCreationForm, LoginForm, PasswordChangeForm, UserChangeForm
+from accounts.models import UserTypeChoice
 from headhunter.models import Resume
 from headhunter.models.vacancy import Vacancy
 
@@ -31,25 +32,30 @@ class LoginView(TemplateView):
             messages.warning(request, "User Not Found")
             return redirect('index')
         login(request, user)
-        return redirect(reverse_lazy('profile', kwargs={'pk': self.request.user.pk}))
+        if request.user.type == UserTypeChoice.COMPANY:
+            return redirect('resume_list')
+        else:
+            return redirect('vacancy_list')
 
 
 def logout_view(request):
     logout(request)
-    return redirect('index')
+    return redirect('login')
 
 
 class RegisterView(CreateView):
     template_name = 'register.html'
     form_class = CustomUserCreationForm
-    success_url = '/'
 
     def post(self, request, *args, **kwargs):
         form = self.form_class(request.POST, request.FILES)
         if form.is_valid():
             user = form.save()
             login(request, user)
-            return redirect(self.success_url)
+            if request.user.type == UserTypeChoice.COMPANY:
+                return redirect('resume_list')
+            else:
+                return redirect('vacancy_list')
         context = {'form': form}
         return self.render_to_response(context)
 
@@ -62,7 +68,7 @@ class ProfileView(LoginRequiredMixin, DetailView):
     def get_context_data(self, **kwargs):
         account = self.get_object()
         resumes = Resume.objects.filter(author=account)
-        vacancy = Vacancy.objects.filter(author = account)
+        vacancy = Vacancy.objects.filter(author=account)
         kwargs['form'] = UserChangeForm(instance=account)
         kwargs['resumes'] = resumes
         kwargs['vacancy'] = vacancy
@@ -72,15 +78,12 @@ class ProfileView(LoginRequiredMixin, DetailView):
         return get_object_or_404(get_user_model(), pk=self.kwargs.get('pk'))
 
     def get(self, request, *args, **kwargs):
-        if self.get_object().type.COMPANY:
+        account = self.get_object()
+        if account.type == UserTypeChoice.COMPANY:
             self.template_name = 'company_page.html'
-        elif self.get_object().type.CONDIDATE:
-            self.template_name = 'profile.html'
         else:
-            return HttpResponseNotFound()
+            self.template_name = 'profile.html'
         return super().get(request, *args, **kwargs)
-
-
 #
 # class ProfileChangeView(LoginRequiredMixin, UpdateView):
 #     model = get_user_model()
@@ -97,16 +100,3 @@ class ProfileView(LoginRequiredMixin, DetailView):
 #         return response
 #
 #
-# class PasswordChangeView(LoginRequiredMixin, UpdateView):
-#     model = get_user_model()
-#     template_name = 'password_change.html'
-#     form_class = PasswordChangeForm
-#     context_object_name = 'user_obj'
-#
-#     def get_success_url(self):
-#         return reverse('profile', kwargs={'pk': self.request.user.pk})
-#
-#     def form_valid(self, form):
-#         response = super().form_valid(form)
-#         update_session_auth_hash(self.request, self.object)
-#         return response

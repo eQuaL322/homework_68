@@ -53,6 +53,7 @@ class VacancyDetailView(LoginRequiredMixin, DetailView):
     model = Vacancy
     context_object_name = 'vacancy'
 
+
 class VacancyUpdateDateView(UpdateView):
     model = Vacancy
 
@@ -61,5 +62,3 @@ class VacancyUpdateDateView(UpdateView):
         vacancy.updated_at = datetime.now()
         vacancy.save()
         return redirect('profile', vacancy.author.pk)
-
-

@@ -5,7 +5,7 @@
 {% endblock %}
 {% block content %}
     <div class="mt-3">
-        <div class="mb-4 d-flex align-items-center justify-content-center">
+        <div class="mb-4 d-flex align-items-center justify-content-start">
             <div class="acc-img">
                 {% if account.avatar %}
                     <img src="{{ account.avatar.url }}" alt="avatar" height="150" width="150">
@@ -22,6 +22,7 @@
     <div class="d-flex justify-content-start mt-2">
         <button class="btn btn-primary btn-sm" id="myModal" type="button">Редактировать профиль</button>
     </div>
+    <a class="btn btn-primary btn-sm mt-2" href="{% url 'vacancy_list' %}">Просмотреть вакансии</a>
     {% if request.user.pk == account.pk %}
         <div class="resume-list mt-5">
             {% if resumes %}

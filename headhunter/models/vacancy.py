@@ -14,16 +14,22 @@ class Vacancy(models.Model):
         on_delete=models.CASCADE
     )
     title = models.CharField(
-        verbose_name = 'Наименование вакансии',
+        verbose_name='Наименование вакансии',
         max_length=100,
         null=False,
         blank=False
     )
     description = models.TextField(
-        verbose_name = 'Описание вакансии',
+        verbose_name='Описание вакансии',
         max_length=3000,
         null=True,
         blank=True
+    )
+    requirements = models.TextField(
+        verbose_name='Требования',
+        max_length=300,
+        null=True,
+        blank=True,
     )
     salary = models.DecimalField(
         max_digits=12,

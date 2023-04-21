@@ -5,7 +5,7 @@
 {% endblock %}
 {% block content %}
     <div class="mt-3">
-        <div class="mb-4 d-flex align-items-center justify-content-center">
+        <div class="mb-4 d-flex align-items-center justify-content-start">
             <div class="acc-img">
                 {% if account.avatar %}
                     <img src="{{ account.avatar.url }}" alt="avatar" height="150" width="150">
@@ -15,13 +15,14 @@
                 {% endif %}
             </div>
             <div class="d-inline-block">
-                <h5 class="d-inline ml-4">{{ account.username }}</h5>
+                <h5 class="d-inline ml-4">Название компании: {{ account.username }}</h5>
             </div>
         </div>
     </div>
     <div class="d-flex justify-content-start mt-2">
         <button class="btn btn-primary btn-sm" id="myModal" type="button">Редактировать профиль</button>
     </div>
+    <a class="btn btn-primary btn-sm mt-2" href="{% url 'resume_list' %}">Просмотреть резюме</a>
     {% if request.user.pk == account.pk %}
         <div class="resume-list mt-5">
             {% if vacancy %}
@@ -44,6 +45,7 @@
                 <p>Нет опубликованных вакансий</p>
                 <a class="btn btn-primary" href="{% url 'vacancy_create' %}">Добавить вакансию</a>
             {% endif %}
+            <a class="btn btn-primary" href="{% url 'vacancy_create' %}">Добавить вакансию</a>
         </div>
     {% endif %}
 {% endblock %}
