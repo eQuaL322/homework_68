@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block title %}{% endblock %}
+{% block content %}
+    {% for vacancy in vacancies %}
+        <div class="card mt-3">
+            <div class="card-body">
+                <a href="{% url 'vacancy_detail' vacancy.pk %}"><h5 class="card-title">{{ vacancy.title }}</h5></a>
+                <p class="card-text">Категория: {{ vacancy.category }}</p>
+                <p class="card-text">от {{ vacancy.salary }} тг</p>
+                <p class="card-text">{{ vacancy.created_at }}
+                    <a href="{% url 'profile' vacancy.author.pk %}">
+                <p>{{ vacancy.author.username }}</p></a>
+            </div>
+        </div>
+    {% endfor %}
+{% endblock %}

@@ -101,3 +101,13 @@ select[name=type] {
     color: dodgerblue;
 }
 
+.reg-btn {
+    color: white;
+    background-color: #1685e5;
+    border: 0;
+    border-radius: 5px;
+    width: 200px;
+    height: 38px;
+    font-size: 15px;
+    clear: both;
+}

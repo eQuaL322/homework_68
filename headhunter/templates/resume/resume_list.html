@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block title %}{% endblock %}
+{% block content %}
+    {% for resume in resumes %}
+        <div class="card mt-3">
+            <div class="card-body">
+                <a href="{% url 'resume_detail' resume.pk %}"><h5 class="card-title">{{ resume.title }}</h5></a>
+                <p class="card-text">Категория: {{ resume.vacancy }}</p>
+                <p class="card-text">Ожидаемая зарплата {{ resume.salary }} тг</p>
+                <p class="card-text">{{ resume.created_at }}
+                    <a href="{% url 'profile' resume.author.pk %}">
+                <p>{{ resume.author.username }}</p></a>
+            </div>
+        </div>
+    {% endfor %}
+{% endblock %}
