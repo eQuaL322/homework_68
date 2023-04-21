@@ -8,6 +8,7 @@ class VacancyView(ListView):
     template_name = 'vacancy/vacancy_list.html'
     model = Vacancy
     context_object_name = 'vacancies'
+    paginate_by = 20
 
     def get_queryset(self):
         queryset = super().get_queryset()
@@ -20,6 +21,7 @@ class ResumeListView(ListView):
     model = Resume
     context_object_name = 'resumes'
     template_name = 'resume/resume_list.html'
+    paginate_by = 20
 
     def get_queryset(self):
         queryset = super().get_queryset()

@@ -20,4 +20,9 @@
             </div>
         </div>
     {% endfor %}
+    <div class="pagin">
+        {% if is_paginated %}
+            {% include 'partial/pagination.html' %}
+        {% endif %}
+    </div>
 {% endblock %}
