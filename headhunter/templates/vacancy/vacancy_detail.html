@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% load bootstrap5 %}
+{% load static %}
+
+{% block title %}
+    Детальный просмотр резюме
+{% endblock %}
+
+{% block content %}
+
+    <div>
+        <h2 class="my-3">{{ vacancy.title }}</h2>
+        <h6>Категория вакансии: {{ vacancy.category }}</h6>
+        <h6>Зарплата: от {{ vacancy.salary }} тнг</h6>
+        <h6>Категория вакансии: {{ resume.vacancy }}</h6>
+        <h6> Требуемый опыт работы: от {{ vacancy.exp_from }} до {{ vacancy.exp_to }}</h6>
+    </div>
+    <hr>
+    <div>
+    <h6>Описание</h6>
+    <b>{{ vacancy.description }}</b>
+    </div>
+    {% if request.user.pk == vacancy.author.pk %}
+        <a href="{% url 'vacancy_edit' vacancy.pk %}">
+            <button type="button" class="btn btn-primary btn-sm">Редактировать вакансию</button>
+        </a>
+    {% endif %}
+    <hr>
+{% endblock %}
